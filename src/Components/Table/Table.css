@@ -1,0 +1,11 @@
+.table {
+    margin:1rem
+}
+
+.table td,th {
+    text-align: center;   
+ }
+
+.action-button {
+    margin:3px
+}

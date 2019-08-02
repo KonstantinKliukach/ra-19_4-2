@@ -1,0 +1,12 @@
+.trainings-app {
+    margin: auto;
+    min-width: 900px;
+    width: 60%;
+}
+
+.app-title {
+    font-size: 1,1rem;
+    color: grey;
+    text-align: center;
+}
+
