@@ -19,8 +19,15 @@ class App extends Component{
     let isNew = true
 
     for (let training of trainings) {
-      if (training.date === newTraining.date) {
+
+      if (training.date === this.state.editing.date) {
         training.distance = newTraining.distance
+        isNew = !isNew
+        break
+      }
+
+      if (training.date === newTraining.date) {
+        training.distance = Number.parseInt(training.distance) + Number.parseInt(newTraining.distance) 
         isNew = !isNew
         break
       }
@@ -29,7 +36,7 @@ class App extends Component{
     if (isNew) {
       trainings.push(newTraining)
       trainings.sort((prevTrain, nextTrain) => {
-        return prevTrain.date > nextTrain.date ? 1 : -1
+        return prevTrain.date < nextTrain.date ? 1 : -1
       })
     }
 
@@ -43,7 +50,8 @@ class App extends Component{
     let trainings = [...this.state.trainings]
     trainings = [...trainings.slice(0, index), ...trainings.slice(index + 1)];
     this.setState({
-      trainings:[...trainings]
+      trainings:[...trainings],
+      editing: ''
     })
   }
 

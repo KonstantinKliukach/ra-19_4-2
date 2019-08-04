@@ -22,15 +22,24 @@ class InputForm extends Component {
   submitForm = (e) =>{
     e.preventDefault()
     this.props.handleTraining({...this.state})
+    this.setState({
+      date: Date.now(),
+      distance: ''
+    })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.editing !== this.props.editing) {
+      const {date, distance} = this.props.editing
+      this.setState({
+        date: date,
+        distance: distance
+      })
+    }
   }
 
   render() {
     let {date, distance} = this.state
-    const {editing} = this.props
-    if (editing) {
-      date = editing.date
-      distance = editing.distance
-    }
     return (
       <form className='input-form' onSubmit={this.submitForm}>
         <div className="form-row align-items-center">
