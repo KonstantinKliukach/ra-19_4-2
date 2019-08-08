@@ -19,13 +19,6 @@ class App extends Component{
     let isNew = true
 
     for (let training of trainings) {
-
-      if (training.date === this.state.editing.date) {
-        training.distance = newTraining.distance
-        isNew = !isNew
-        break
-      }
-
       if (training.date === newTraining.date) {
         training.distance = Number.parseInt(training.distance) + Number.parseInt(newTraining.distance) 
         isNew = !isNew
